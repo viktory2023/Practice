@@ -17,18 +17,9 @@
     </nav>
     <div class="list">
         <h1 class="text">
-            ДИСЦИПЛИНА
+            СПИСОК
         </h1>
     </div>
-    <form class="failes_list" method="post" th:action="@{/creation/add}">
-        <input type="text" name="id" placeholder="ID" required>
-        <input type="text" name="name" placeholder="Название" required>
-        <input type="text" name="semester" placeholder="Номер семестра" required>
-        <input type="text" name="isExam" placeholder="Вид аттестации" required>
-        <input type="text" name="teacher" placeholder="ФИО преподавателя" required>
-        <input type="text" name="hours" placeholder="Объем в часах" required>
-        <button type="submit" class="button-17" role="button">Добавить</button>
-    </form>
     <div class="t">
         <table>
             <thead>
@@ -50,7 +41,14 @@
                 <td th:text="${studyPlan.teacher}"></td>
                 <td th:text="${studyPlan.hours}"></td>
                 <td>
-                    <a th:href="'/studyPlan/' + ${studyPlan.id}" type="submit" class="button-17" role="button">Редактировать</a>
+                    <form th:action="@{/home/delete/{id}(id=${instrument.id})}" method="post">
+                        <button type ="submit" class="button-17" role="button">Удалить</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{'/instrument/'+${instrument.id}}">
+                        <button type ="submit" class="button-17" role="button">Редактировать</button>
+                    </form>
                 </td>
             </tr>
             </tbody>
